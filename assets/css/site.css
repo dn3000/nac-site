@@ -1,0 +1,404 @@
+/* ============================================================================
+   Nitamur Ad Caelum Ltd — site.css
+   Custom properties, brand type rules, chevron dividers, keyframes, motion.
+   Tailwind (CDN) handles layout/colour utilities; this file carries everything
+   Tailwind config cannot express and every piece of motion.
+   ========================================================================== */
+
+:root {
+  --nac-forest:      #25453A;
+  --nac-forest-deep: #152A22;
+  --nac-sage:        #8FB79A;
+  --nac-sage-bright: #A9CDB6;
+  --nac-tint:        #F4F6F3;
+  --nac-offwhite:    #EEF3EE;
+  --nac-tagline:     #7FA98B;
+
+  /* Chevron geometry — 28 across, 22 down, exactly as the logo mark.
+     --ch is the apex height; --cw is the matching horizontal run
+     (--ch * 28 / 22) so the divider slope equals the logo slope. */
+  --ch: 46px;
+  --cw: 58.5px;
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------------- */
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: 'Sora', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--nac-forest);
+  background: var(--nac-forest-deep);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Reserve the metrics of Sora so swapping the webfont in causes no shift. */
+h1, h2, h3, h4 { line-height: 1.12; margin: 0; }
+p { margin: 0; }
+
+img, svg { max-width: 100%; }
+
+a { color: inherit; }
+
+/* ---------------------------------------------------------------------------
+   Brand type rules (non-negotiable)
+   ------------------------------------------------------------------------- */
+.brand-nac      { font-weight: 800; letter-spacing: -0.02em; }
+.brand-limited  { font-weight: 400; opacity: 0.5; }
+
+.eyebrow {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Focus — visible sage ring on every interactive element
+   ------------------------------------------------------------------------- */
+:focus-visible {
+  outline: 3px solid var(--nac-sage-bright);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+/* Keep the default ring off when focus is driven by mouse, on browsers that
+   support :focus-visible; the fallback below covers the rest. */
+:focus:not(:focus-visible) { outline: none; }
+
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 1rem;
+  z-index: 100;
+  background: var(--nac-sage-bright);
+  color: var(--nac-forest-deep);
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  transition: top 0.18s ease;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ---------------------------------------------------------------------------
+   Chevron section dividers
+   The section gets an upward chevron cut into its top edge; a negative top
+   margin overlaps the previous section so its colour shows through the cut.
+   Slope run/rise = --cw / --ch = 28 / 22 — identical to the logo mark.
+   ------------------------------------------------------------------------- */
+.chevron-top {
+  margin-top: calc(var(--ch) * -1);
+  padding-top: calc(var(--ch) + 4rem);
+  clip-path: polygon(
+    0 var(--ch),
+    calc(50% - var(--cw)) var(--ch),
+    50% 0,
+    calc(50% + var(--cw)) var(--ch),
+    100% var(--ch),
+    100% 100%,
+    0 100%
+  );
+}
+
+/* A thin sage seam that traces the same apex, drawn just above the cut. */
+.chevron-seam {
+  position: relative;
+  height: var(--ch);
+  margin-bottom: calc(var(--ch) * -1);
+  z-index: 2;
+  pointer-events: none;
+}
+.chevron-seam::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--nac-sage);
+  opacity: 0.5;
+  clip-path: polygon(
+    0 var(--ch),
+    calc(50% - var(--cw)) var(--ch),
+    50% 0,
+    calc(50% + var(--cw)) var(--ch),
+    100% var(--ch),
+    100% calc(var(--ch) + 2px),
+    calc(50% + var(--cw)) calc(var(--ch) + 2px),
+    50% 2px,
+    calc(50% - var(--cw)) calc(var(--ch) + 2px),
+    0 calc(var(--ch) + 2px)
+  );
+}
+
+/* ---------------------------------------------------------------------------
+   Progress rail — fixed right edge, one chevron tick per sector
+   ------------------------------------------------------------------------- */
+.rail {
+  position: fixed;
+  top: 50%;
+  right: clamp(0.5rem, 1.5vw, 1.5rem);
+  transform: translateY(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  align-items: center;
+}
+.rail::before {
+  content: "";
+  position: absolute;
+  top: -0.6rem;
+  bottom: -0.6rem;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    var(--nac-sage) 0 var(--rail-fill, 0%),
+    rgba(143, 183, 154, 0.22) var(--rail-fill, 0%) 100%
+  );
+  transition: none;
+}
+.rail-tick {
+  position: relative;
+  z-index: 1;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  color: var(--nac-sage);
+  opacity: 0.55;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.rail-tick svg { width: 15px; height: 15px; display: block; transition: width 0.25s ease, height 0.25s ease; }
+.rail-tick:hover { opacity: 0.85; }
+.rail-tick[aria-current="true"] { opacity: 1; transform: scale(1.15); }
+.rail-tick[aria-current="true"] svg { width: 22px; height: 22px; }
+.rail-tick .rail-label {
+  position: absolute;
+  right: 130%;
+  top: 50%;
+  transform: translateY(-50%) translateX(6px);
+  white-space: nowrap;
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--nac-offwhite);
+  background: rgba(21, 42, 34, 0.92);
+  padding: 0.25rem 0.55rem;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.rail-tick:hover .rail-label,
+.rail-tick:focus-visible .rail-label { opacity: 1; transform: translateY(-50%) translateX(0); }
+
+@media (max-width: 640px) { .rail { display: none; } }
+
+/* ---------------------------------------------------------------------------
+   Header
+   ------------------------------------------------------------------------- */
+.site-header {
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+}
+.site-header.scrolled {
+  background: rgba(21, 42, 34, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(143, 183, 154, 0.16);
+}
+
+/* Mobile nav overlay */
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: var(--nac-forest-deep);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 2rem;
+  transform: translateY(-100%);
+  visibility: hidden;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0.35s;
+}
+.mobile-nav.open {
+  transform: translateY(0);
+  visibility: visible;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mobile-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  color: var(--nac-offwhite);
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 0.6rem 0;
+  text-decoration: none;
+}
+.mobile-nav a .tick { color: var(--nac-sage); flex: 0 0 auto; display: inline-flex; }
+.mobile-nav a .tick svg { width: 28px; height: 10px; display: block; }
+
+/* ---------------------------------------------------------------------------
+   Placeholder styling — must be impossible to mistake for finished content
+   ------------------------------------------------------------------------- */
+.placeholder {
+  display: inline-block;
+  border: 1px dashed currentColor;
+  border-radius: 6px;
+  padding: 0.15em 0.6em;
+  opacity: 0.6;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+.placeholder-block {
+  border: 1px dashed rgba(37, 69, 58, 0.45);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: rgba(37, 69, 58, 0.7);
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0 10px,
+    rgba(37, 69, 58, 0.04) 10px 20px
+  );
+  font-style: italic;
+}
+
+/* ---------------------------------------------------------------------------
+   Status badges
+   ------------------------------------------------------------------------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.badge-operating { color: #1f6b4a; background: rgba(143, 183, 154, 0.24); }
+.badge-dev       { color: #8a6d1a; background: rgba(214, 178, 92, 0.22); }
+
+/* Capability chips */
+.chip {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 400;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(37, 69, 58, 0.18);
+  color: var(--nac-forest);
+  background: #fff;
+}
+
+/* ---------------------------------------------------------------------------
+   Hero chevron draw-in
+   Three chevrons rise into place bottom-to-top; sage arrives last at the apex.
+   One orchestrated moment (~1.2s), settles, never repeats.
+   ------------------------------------------------------------------------- */
+@keyframes chevron-rise {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: var(--to-opacity, 1); transform: translateY(0); }
+}
+
+.hero-mark path { opacity: 0; }
+.hero-animate .hero-mark .cv-bottom {
+  animation: chevron-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards;
+}
+.hero-animate .hero-mark .cv-mid {
+  animation: chevron-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+}
+.hero-animate .hero-mark .cv-top {
+  animation: chevron-rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards;
+}
+
+/* Static (no-JS / reduced motion) — mark shows in final state immediately. */
+.hero-mark .cv-bottom { --to-opacity: 0.35; }
+.hero-mark .cv-mid    { --to-opacity: 0.9; }
+.hero-mark .cv-top    { --to-opacity: 1; }
+.no-anim .hero-mark .cv-bottom { opacity: 0.35; }
+.no-anim .hero-mark .cv-mid    { opacity: 0.9; }
+.no-anim .hero-mark .cv-top    { opacity: 1; }
+
+/* Scroll cue */
+@keyframes cue-bob { 0%,100% { transform: translateY(0); opacity: 0.6; } 50% { transform: translateY(6px); opacity: 1; } }
+.scroll-cue svg { animation: cue-bob 1.8s ease-in-out infinite; }
+
+/* ---------------------------------------------------------------------------
+   Scroll reveals
+   ------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+/* ---------------------------------------------------------------------------
+   Subsidiary card
+   ------------------------------------------------------------------------- */
+.subsidiary-logo-fallback {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  color: var(--nac-forest);
+  line-height: 1.05;
+}
+.card-tick-count { display: inline-flex; gap: 3px; align-items: flex-end; }
+.card-tick-count svg { width: 13px; height: 13px; color: var(--nac-sage); }
+
+/* Form */
+.field-error { color: #a12b2b; font-size: 0.8rem; font-weight: 600; margin-top: 0.35rem; display: none; }
+.field-error.show { display: block; }
+.field-error::before { content: "⚠ "; }
+input:where([aria-invalid="true"]), select:where([aria-invalid="true"]), textarea:where([aria-invalid="true"]) {
+  border-color: #a12b2b !important;
+  box-shadow: 0 0 0 1px #a12b2b;
+}
+
+.spinner {
+  width: 18px; height: 18px;
+  border: 2px solid rgba(238, 243, 238, 0.35);
+  border-top-color: var(--nac-offwhite);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------------------------------------------------------------------------
+   Reduced motion — kill the hero sequence, count-ups and every reveal.
+   Content renders in its final state immediately.
+   ------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .hero-mark .cv-bottom { opacity: 0.35 !important; transform: none !important; }
+  .hero-mark .cv-mid    { opacity: 0.9 !important; transform: none !important; }
+  .hero-mark .cv-top    { opacity: 1 !important; transform: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .scroll-cue svg { animation: none !important; }
+}

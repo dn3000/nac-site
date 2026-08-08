@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.00 512.00" width="512.00" height="512.00" role="img" aria-label="NAC Limited">
+  <rect width="512.00" height="512.00" rx="112.64" ry="112.64" fill="#8FB79A"/>
+  <g transform="translate(80.457,85.943) scale(5.485714)">
+  <path d="M32 4 L60 26 L48 26 L32 13 L16 26 L4 26 Z" fill="#25453A"/>
+  <path d="M32 24 L60 46 L48 46 L32 33 L16 46 L4 46 Z" fill="#25453A" opacity="0.7"/>
+  <path d="M32 42 L52 58 L42 58 L32 50 L22 58 L12 58 Z" fill="#25453A" opacity="0.4"/>
+  </g>
+</svg>

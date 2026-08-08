@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Nitamur Ad Caelum Ltd — We aim higher</title>
+  <meta name="description" content="Nitamur Ad Caelum Ltd (NAC Limited) is a UK holding company backing operating businesses across five sectors: healthcare, logistics, software, NGO & FCDO partnerships, and printing. Registered in England & Wales, company number 09115910." />
+  <meta name="theme-color" content="#25453A" />
+  <link rel="canonical" href="https://nitamuradcaelum.co.uk/" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Nitamur Ad Caelum Ltd" />
+  <meta property="og:title" content="Nitamur Ad Caelum Ltd — We aim higher" />
+  <meta property="og:description" content="A UK holding company backing operating businesses across healthcare, logistics, software, NGO & FCDO partnerships, and printing." />
+  <meta property="og:url" content="https://nitamuradcaelum.co.uk/" />
+  <meta property="og:image" content="https://nitamuradcaelum.co.uk/assets/social/og-image-1200x630.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nitamur Ad Caelum Ltd — We aim higher" />
+  <meta name="twitter:description" content="A UK holding company backing operating businesses across five sectors." />
+  <meta name="twitter:image" content="https://nitamuradcaelum.co.uk/assets/social/og-image-1200x630.png" />
+
+  <!-- Icons / manifest (relative paths so the page also opens from file://) -->
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon-180.png" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- Fonts: Sora 400 / 600 / 800 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/site.css" />
+
+  <!-- Tailwind (CDN) + brand tokens -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: '#25453A',
+            'forest-deep': '#152A22',
+            sage: '#8FB79A',
+            'sage-bright': '#A9CDB6',
+            tint: '#F4F6F3',
+            offwhite: '#EEF3EE',
+            tagline: '#7FA98B'
+          },
+          fontFamily: { sans: ['Sora', 'system-ui', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+</head>
+
+<body class="font-sans bg-forest-deep text-forest">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== HEADER ===================== -->
+  <header id="site-header" class="site-header fixed top-0 inset-x-0 z-50">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between gap-4">
+      <a href="#top" class="flex items-center" aria-label="Nitamur Ad Caelum Ltd — home">
+        <img src="assets/logo/nac-logo-horizontal-reversed.svg" alt="Nitamur Ad Caelum Ltd" class="h-8 w-auto" />
+      </a>
+
+      <nav id="primary-nav" class="hidden lg:flex items-center gap-8" aria-label="Sectors">
+        <div id="nav-links" class="flex items-center gap-7"></div>
+        <a href="#contact" class="text-offwhite/85 hover:text-offwhite transition-colors text-sm">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#contact"
+           class="hidden sm:inline-flex items-center rounded-full bg-sage px-5 py-2.5 text-forest-deep font-semibold text-sm hover:bg-sage-bright transition-colors">
+          Start an enquiry
+        </a>
+        <button id="nav-toggle" type="button"
+                class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg text-offwhite hover:bg-white/10 transition-colors"
+                aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== MOBILE NAV ===================== -->
+  <div id="mobile-nav" class="mobile-nav" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
+    <button id="mobile-nav-close" type="button"
+            class="absolute top-6 right-6 w-11 h-11 inline-flex items-center justify-center rounded-lg text-offwhite hover:bg-white/10"
+            aria-label="Close menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </button>
+    <nav id="mobile-nav-links" aria-label="Sectors"></nav>
+    <a href="#contact" data-mobile-link="1"
+       class="mt-6 inline-flex items-center justify-center rounded-full bg-sage px-6 py-3 text-forest-deep font-semibold w-max">
+      Start an enquiry
+    </a>
+  </div>
+
+  <!-- ===================== PROGRESS RAIL ===================== -->
+  <div id="rail" class="rail" role="navigation" aria-label="Section progress"></div>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <!-- ===================== HERO ===================== -->
+    <section id="hero" class="relative min-h-screen bg-forest-deep flex items-center overflow-hidden"
+             aria-labelledby="hero-heading">
+      <!-- faint oversized chevron field, decorative -->
+      <div class="pointer-events-none absolute inset-0 opacity-[0.05] flex items-center justify-center" aria-hidden="true">
+        <svg viewBox="0 0 64 64" class="w-[140vmin] h-[140vmin]" fill="none">
+          <path d="M32 4 L60 26 L48 26 L32 13 L16 26 L4 26 Z" fill="#8FB79A" />
+          <path d="M32 24 L60 46 L48 46 L32 33 L16 46 L4 46 Z" fill="#EEF3EE" />
+        </svg>
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-5 sm:px-8 py-32 w-full">
+        <div class="max-w-3xl">
+          <!-- Animated mark -->
+          <svg id="hero-mark" class="hero-mark w-24 h-24 sm:w-28 sm:h-28 mb-10" viewBox="0 0 64 64" fill="none"
+               role="img" aria-label="The Nitamur Ad Caelum ascending chevron mark">
+            <path class="cv-bottom" d="M32 42 L52 58 L42 58 L32 50 L22 58 L12 58 Z" fill="#EEF3EE" />
+            <path class="cv-mid"    d="M32 24 L60 46 L48 46 L32 33 L16 46 L4 46 Z" fill="#EEF3EE" />
+            <path class="cv-top"    d="M32 4 L60 26 L48 26 L32 13 L16 26 L4 26 Z" fill="#8FB79A" />
+          </svg>
+
+          <p class="eyebrow text-sage-bright mb-6">Nitamur Ad Caelum — we aim higher</p>
+
+          <h1 id="hero-heading" class="text-offwhite text-5xl sm:text-6xl lg:text-7xl leading-[1.05]">
+            <span class="brand-nac">NAC</span> <span class="brand-limited">Limited</span>
+          </h1>
+
+          <p class="mt-7 text-offwhite/85 text-xl sm:text-2xl leading-relaxed max-w-2xl">
+            Nitamur Ad Caelum Ltd is a UK group of businesses across five sectors, holding
+            and backing each as its own company.
+          </p>
+
+          <div class="mt-10 flex flex-col sm:flex-row gap-4">
+            <a href="#group"
+               class="inline-flex items-center justify-center rounded-full bg-sage px-7 py-3.5 text-forest-deep font-semibold hover:bg-sage-bright transition-colors">
+              Explore the group
+            </a>
+            <a href="#contact"
+               class="inline-flex items-center justify-center rounded-full border border-sage/50 px-7 py-3.5 text-offwhite font-semibold hover:bg-white/5 transition-colors">
+              Start an enquiry
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <a href="#group" class="scroll-cue absolute bottom-8 left-1/2 -translate-x-1/2 text-sage-bright/80 flex flex-col items-center gap-2"
+         aria-label="Scroll to explore the group">
+        <span class="eyebrow text-[0.6rem]">Scroll</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 5v14M6 13l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </section>
+
+    <!-- ===================== GROUP AT A GLANCE ===================== -->
+    <section id="group" class="bg-forest py-24 sm:py-28" aria-labelledby="group-heading">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="reveal max-w-2xl">
+          <p class="eyebrow text-sage-bright">The group at a glance</p>
+          <h2 id="group-heading" class="mt-4 text-3xl sm:text-4xl brand-nac text-offwhite">
+            One group. Distinct businesses. Shared standards.
+          </h2>
+        </div>
+        <div id="group-stats" class="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12"></div>
+      </div>
+    </section>
+
+    <!-- ===================== WHAT THE GROUP DOES ===================== -->
+    <section id="what" class="bg-forest-deep py-24 sm:py-28" aria-labelledby="what-heading">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="reveal max-w-2xl">
+          <p class="eyebrow text-sage-bright">What the group does</p>
+          <h2 id="what-heading" class="mt-4 text-3xl sm:text-4xl brand-nac text-offwhite">
+            Three audiences, equal weight.
+          </h2>
+          <p class="mt-4 text-offwhite/75 leading-relaxed">
+            Investors, government and NGO buyers, and the clients of our companies each need
+            something different from the group. We give all three the same attention.
+          </p>
+        </div>
+
+        <div class="mt-14 grid md:grid-cols-3 gap-8">
+          <div class="reveal">
+            <div class="text-sage mb-4" aria-hidden="true">
+              <svg viewBox="0 0 64 22" width="44" fill="currentColor"><path d="M32 4 L60 22 L48 22 L32 12 L16 22 L4 22 Z"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold text-offwhite">For investors</h3>
+            <p class="mt-3 text-offwhite/75 leading-relaxed">
+              We hold and grow operating companies across five sectors, each run as its own
+              business with its own brand. Partner with the group to back a spread of ventures,
+              not a single bet.
+            </p>
+          </div>
+          <div class="reveal" style="transition-delay:.08s">
+            <div class="text-sage mb-4" aria-hidden="true">
+              <svg viewBox="0 0 64 22" width="44" fill="currentColor"><path d="M32 4 L60 22 L48 22 L32 12 L16 22 L4 22 Z"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold text-offwhite">For governments</h3>
+            <p class="mt-3 text-offwhite/75 leading-relaxed">
+              Nitamur Ad Caelum Ltd is registered in England &amp; Wales (company number 09115910)
+              with a named registered office. Our procurement route sits in the enquiry form, so
+              tenders reach the right subsidiary directly.
+            </p>
+          </div>
+          <div class="reveal" style="transition-delay:.16s">
+            <div class="text-sage mb-4" aria-hidden="true">
+              <svg viewBox="0 0 64 22" width="44" fill="currentColor"><path d="M32 4 L60 22 L48 22 L32 12 L16 22 L4 22 Z"/></svg>
+            </div>
+            <h3 class="text-xl font-semibold text-offwhite">For clients</h3>
+            <p class="mt-3 text-offwhite/75 leading-relaxed">
+              You deal with the operating company, not the parent. Each subsidiary below is named,
+              self-contained, and linked to its own site so you can reach the team doing the work.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SUBSIDIARIES (light) ===================== -->
+    <div class="chevron-seam" aria-hidden="true"></div>
+    <section id="subsidiaries" class="chevron-top bg-tint pb-24 sm:pb-28" aria-labelledby="subs-heading">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="reveal max-w-2xl">
+          <p class="eyebrow text-tagline">Partners &amp; subsidiaries</p>
+          <h2 id="subs-heading" class="mt-4 text-3xl sm:text-4xl brand-nac text-forest">
+            The businesses in the group, and the partners we work with.
+          </h2>
+          <p class="mt-4 text-forest/70">
+            Across five sectors: the operating companies the group owns and backs, shown alongside
+            the independent partners we deliver with. Each keeps its own name, brand and route to
+            market. Muted cards mark businesses and partnerships still to launch.
+          </p>
+        </div>
+
+        <div id="sectors" class="mt-16"></div>
+      </div>
+    </section>
+
+    <!-- ===================== HOW WE OPERATE ===================== -->
+    <section id="how" class="bg-offwhite py-24 sm:py-28" aria-labelledby="how-heading">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="reveal max-w-2xl">
+          <p class="eyebrow text-tagline">How we operate</p>
+          <h2 id="how-heading" class="mt-4 text-3xl sm:text-4xl brand-nac text-forest">
+            What the holding company brings to every subsidiary.
+          </h2>
+        </div>
+
+        <div class="mt-14 grid sm:grid-cols-2 gap-x-10 gap-y-12">
+          <div class="reveal flex gap-5">
+            <span class="text-sage flex-none mt-1" aria-hidden="true">
+              <svg viewBox="0 0 64 22" width="40" fill="currentColor"><path d="M32 4 L60 22 L48 22 L32 12 L16 22 L4 22 Z"/></svg>
+            </span>
+            <div>
+              <h3 class="text-xl font-semibold text-forest">Governance and compliance</h3>
+              <p class="mt-2 text-forest/75 leading-relaxed">
+                Each subsidiary keeps its own board and accountability, and answers to the group on
+                a single set of standards: safeguarding, data protection, and honest reporting.
+                Compliance is designed into each business, not added afterwards.
+              </p>
+            </div>
+          </div>
+          <div class="reveal flex gap-5" style="transition-delay:.08s">
+            <span class="text-sage flex-none mt-1" aria-hidden="true">
+              <svg viewBox="0 0 64 22" width="40" fill="currentColor"><path d="M32 4 L60 22 L48 22 L32 12 L16 22 L4 22 Z"/></svg>
+            </span>
+            <div>
+              <h3 class="text-xl font-semibold text-forest">Capital</h3>
+              <p class="mt-2 text-forest/75 leading-relaxed">
+                The group funds each business through its early stages and holds for the long term,
+                so subsidiaries can build carefully rather than chase the next quarter. Capital
+                follows a clear plan, not a headline.
+              </p>
+            </div>
+          </div>
+          <div class="reveal flex gap-5" style="transition-delay:.16s">
+            <span class="text-sage flex-none mt-1" aria-hidden="true">
+              <svg viewBox="0 0 64 22" width="40" fill="currentColor"><path d="M32 4 L60 22 L48 22 L32 12 L16 22 L4 22 Z"/></svg>
+            </span>
+            <div>
+              <h3 class="text-xl font-semibold text-forest">Shared services</h3>
+              <p class="mt-2 text-forest/75 leading-relaxed">
+                Finance, legal, software and brand sit at group level, so a new business starts with
+                infrastructure already in place. CNote Solutions builds and maintains the group's
+                own products, keeping engineering in-house.
+              </p>
+            </div>
+          </div>
+          <div class="reveal flex gap-5" style="transition-delay:.24s">
+            <span class="text-sage flex-none mt-1" aria-hidden="true">
+              <svg viewBox="0 0 64 22" width="40" fill="currentColor"><path d="M32 4 L60 22 L48 22 L32 12 L16 22 L4 22 Z"/></svg>
+            </span>
+            <div>
+              <h3 class="text-xl font-semibold text-forest">Delivery standards</h3>
+              <p class="mt-2 text-forest/75 leading-relaxed">
+                Every subsidiary is held to the same bar on accessibility, security and follow-through.
+                Where we serve people at a hard moment or a public body under scrutiny, the work has
+                to be right the first time.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== REACH ===================== -->
+    <section id="reach" class="bg-forest py-24 sm:py-28" aria-labelledby="reach-heading">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-12 items-start">
+        <div class="reveal">
+          <p class="eyebrow text-sage-bright">Reach</p>
+          <h2 id="reach-heading" class="mt-4 text-3xl sm:text-4xl brand-nac text-offwhite">
+            Where the group operates.
+          </h2>
+          <p class="mt-4 text-offwhite/75 max-w-md leading-relaxed">
+            The group operates in England and across three southern African countries. Our
+            footprint grows as businesses move from development into operation.
+          </p>
+        </div>
+        <ul id="reach-list" class="lg:pt-2 list-none pl-0 m-0" aria-label="Regions of operation"></ul>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <div class="chevron-seam" aria-hidden="true"></div>
+    <section id="contact" class="chevron-top bg-forest-deep pb-24 sm:pb-28 scroll-mt-24" aria-labelledby="contact-heading">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="reveal max-w-2xl">
+          <p class="eyebrow text-sage-bright">Contact</p>
+          <h2 id="contact-heading" class="mt-4 text-3xl sm:text-4xl brand-nac text-offwhite">
+            Start an enquiry with the group.
+          </h2>
+          <p class="mt-4 text-offwhite/75 leading-relaxed">
+            Tell us who you are and what you need. Your message reaches Nitamur Ad Caelum Ltd, and we
+            route it to the right subsidiary.
+          </p>
+        </div>
+
+        <div class="mt-14 grid lg:grid-cols-3 gap-10 lg:gap-14 items-start">
+          <!-- Form -->
+          <div class="lg:col-span-2 reveal">
+            <form id="enquiry-form" novalidate class="space-y-6">
+              <!-- Web3Forms hidden fields -->
+              <input type="hidden" name="access_key" value="" />
+              <input type="hidden" name="subject" value="New enquiry via nitamuradcaelum.co.uk" />
+              <input type="hidden" name="from_name" value="NAC Limited website" />
+              <!-- honeypot -->
+              <label class="hidden" aria-hidden="true">
+                Leave this empty <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" />
+              </label>
+
+              <div id="form-key-notice" hidden
+                   class="rounded-xl p-4 bg-amber-200/10 ring-1 ring-amber-300/40 text-amber-100 text-sm">
+                <strong class="font-semibold">Note:</strong> the form is fully built but the Web3Forms
+                access key has not been added yet, so submissions are not being delivered. Add the key in
+                <code>assets/js/site.data.js</code> to switch it on. Until then, email
+                <a href="mailto:hello@NitamurAdCaelum.co.uk" class="underline">hello@NitamurAdCaelum.co.uk</a>.
+              </div>
+
+              <div class="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label for="f-name" class="block eyebrow text-offwhite/60 mb-2">Full name <span class="text-sage-bright">*</span></label>
+                  <input id="f-name" name="name" type="text" autocomplete="name" required
+                         aria-describedby="err-name"
+                         class="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-offwhite placeholder-offwhite/40 focus:border-sage outline-none transition-colors" />
+                  <p id="err-name" class="field-error" role="alert"></p>
+                </div>
+                <div>
+                  <label for="f-email" class="block eyebrow text-offwhite/60 mb-2">Email <span class="text-sage-bright">*</span></label>
+                  <input id="f-email" name="email" type="email" autocomplete="email" required
+                         aria-describedby="err-email"
+                         class="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-offwhite placeholder-offwhite/40 focus:border-sage outline-none transition-colors" />
+                  <p id="err-email" class="field-error" role="alert"></p>
+                </div>
+              </div>
+
+              <div class="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label for="f-org" class="block eyebrow text-offwhite/60 mb-2">Organisation</label>
+                  <input id="f-org" name="organisation" type="text" autocomplete="organization"
+                         class="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-offwhite placeholder-offwhite/40 focus:border-sage outline-none transition-colors" />
+                </div>
+                <div>
+                  <label for="f-country" class="block eyebrow text-offwhite/60 mb-2">Country</label>
+                  <input id="f-country" name="country" type="text" autocomplete="country-name"
+                         class="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-offwhite placeholder-offwhite/40 focus:border-sage outline-none transition-colors" />
+                </div>
+              </div>
+
+              <div class="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label for="f-enquirer" class="block eyebrow text-offwhite/60 mb-2">I am enquiring as <span class="text-sage-bright">*</span></label>
+                  <select id="f-enquirer" name="enquiring_as" required aria-describedby="err-enquirer"
+                          class="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-offwhite focus:border-sage outline-none transition-colors">
+                    <option value="">Select…</option>
+                  </select>
+                  <p id="err-enquirer" class="field-error" role="alert"></p>
+                </div>
+                <div>
+                  <label for="f-subsidiary" class="block eyebrow text-offwhite/60 mb-2">Subsidiary of interest</label>
+                  <select id="f-subsidiary" name="subsidiary"
+                          class="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-offwhite focus:border-sage outline-none transition-colors">
+                    <option value="">Select…</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Conditional follow-up (rendered from ENQUIRER_TYPES) -->
+              <div id="f-followup"></div>
+
+              <div>
+                <label for="f-message" class="block eyebrow text-offwhite/60 mb-2">Message <span class="text-sage-bright">*</span></label>
+                <textarea id="f-message" name="message" rows="5" required minlength="20"
+                          aria-describedby="err-message"
+                          class="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-offwhite placeholder-offwhite/40 focus:border-sage outline-none transition-colors resize-y"></textarea>
+                <p id="err-message" class="field-error" role="alert"></p>
+              </div>
+
+              <div>
+                <label class="flex items-start gap-3 text-offwhite/80 text-sm leading-relaxed">
+                  <input id="f-consent" name="consent" type="checkbox" required aria-describedby="err-consent"
+                         class="mt-1 w-5 h-5 flex-none rounded border-white/30 bg-white/5 accent-sage" />
+                  <span>I agree that Nitamur Ad Caelum Ltd may contact me about this enquiry. <span class="text-sage-bright">*</span></span>
+                </label>
+                <p id="err-consent" class="field-error" role="alert"></p>
+                <p class="mt-3 text-offwhite/55 text-xs leading-relaxed max-w-prose">
+                  We use the details you provide only to respond to your enquiry and route it to the
+                  right subsidiary — we do not sell them or use them for marketing. See our
+                  <a href="privacy.html" class="underline hover:text-sage-bright">privacy policy</a>
+                  for how we handle your data and your rights.
+                </p>
+              </div>
+
+              <div id="form-inflight-message" hidden tabindex="-1"></div>
+
+              <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                <button id="f-submit" type="submit"
+                        class="inline-flex items-center gap-3 rounded-full bg-sage px-8 py-3.5 text-forest-deep font-semibold hover:bg-sage-bright transition-colors disabled:opacity-70 disabled:cursor-not-allowed">
+                  <span class="spinner" hidden></span>
+                  <span class="btn-label">Send enquiry</span>
+                </button>
+                <p class="text-sage-bright text-sm font-semibold flex items-center gap-2">
+                  <svg viewBox="0 0 64 22" width="20" fill="currentColor" aria-hidden="true"><path d="M32 4 L60 22 L48 22 L32 12 L16 22 L4 22 Z"/></svg>
+                  We reply within 1 working day.
+                </p>
+              </div>
+            </form>
+          </div>
+
+          <!-- Group details -->
+          <aside class="reveal rounded-2xl bg-white/5 ring-1 ring-white/10 p-8" aria-label="Group details">
+            <h3 class="text-lg font-semibold text-offwhite">Nitamur Ad Caelum Ltd</h3>
+            <dl class="mt-5 space-y-5 text-offwhite/80 text-sm">
+              <div>
+                <dt class="eyebrow text-sage-bright text-[0.6rem] mb-1">Registered office</dt>
+                <dd>
+                  103 Stone Drive<br />
+                  Shifnal, Shropshire<br />
+                  TF11 9LX, United Kingdom
+                </dd>
+              </div>
+              <div>
+                <dt class="eyebrow text-sage-bright text-[0.6rem] mb-1">Company number</dt>
+                <dd>09115910 · Registered in England &amp; Wales</dd>
+              </div>
+              <div>
+                <dt class="eyebrow text-sage-bright text-[0.6rem] mb-1">Email</dt>
+                <dd><a href="mailto:hello@NitamurAdCaelum.co.uk" class="underline hover:text-sage-bright">hello@NitamurAdCaelum.co.uk</a></dd>
+              </div>
+              <div>
+                <dt class="eyebrow text-sage-bright text-[0.6rem] mb-1">Phone</dt>
+                <dd><a href="tel:+447864125677" class="hover:text-sage-bright">+44 7864 125677</a></dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="bg-forest-deep border-t border-sage/15 py-16" aria-label="Site footer">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="grid md:grid-cols-3 gap-12">
+        <div>
+          <img src="assets/logo/nac-logo-stacked-reversed.svg" alt="Nitamur Ad Caelum Ltd" class="h-24 w-auto" />
+          <p class="eyebrow text-sage-bright mt-6">Nitamur Ad Caelum — we aim higher</p>
+        </div>
+
+        <div>
+          <h2 class="eyebrow text-offwhite/50">Subsidiaries</h2>
+          <ul class="mt-4 space-y-2 text-offwhite/80 text-sm">
+            <li>Zanith CHC — <span class="text-offwhite/50">Healthcare</span></li>
+            <li>CareBreak — <span class="text-offwhite/50">Healthcare</span></li>
+            <li>Logistics — <span class="text-offwhite/50">In development</span></li>
+            <li>CNote Solutions — <span class="text-offwhite/50">Software</span></li>
+            <li>NGO &amp; FCDO partnerships — <span class="text-offwhite/50">In development</span></li>
+          </ul>
+          <h2 class="eyebrow text-offwhite/50 mt-6">Partners</h2>
+          <ul class="mt-4 space-y-2 text-offwhite/80 text-sm">
+            <li>Yimi Paper — <span class="text-offwhite/50">Printing · China</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="eyebrow text-offwhite/50">Registered office</h2>
+          <address class="mt-4 not-italic text-offwhite/80 text-sm leading-relaxed">
+            103 Stone Drive<br />
+            Shifnal, Shropshire<br />
+            TF11 9LX, United Kingdom<br /><br />
+            Company number 09115910<br />
+            <a href="mailto:hello@NitamurAdCaelum.co.uk" class="underline hover:text-sage-bright">hello@NitamurAdCaelum.co.uk</a>
+          </address>
+        </div>
+      </div>
+
+      <div class="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-3 text-offwhite/55 text-sm">
+        <p>© <span id="copyright-year">2026</span> Nitamur Ad Caelum Ltd. All rights reserved.</p>
+        <p class="flex items-center gap-4">
+          <a href="privacy.html" class="underline hover:text-sage-bright">Privacy policy</a>
+          <span>Registered in England &amp; Wales, company number 09115910.</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== NOSCRIPT FALLBACK ===================== -->
+  <noscript>
+    <div style="background:#152A22;color:#EEF3EE;padding:2rem;text-align:center;font-family:Sora,system-ui,sans-serif;">
+      <p style="max-width:44rem;margin:0 auto 1rem;">
+        This site uses JavaScript to render the group's subsidiaries and enquiry form and to play
+        its animations. With JavaScript off, the core information below is still available.
+      </p>
+      <p style="max-width:44rem;margin:0 auto;">
+        <strong>Nitamur Ad Caelum Ltd (NAC Limited)</strong> — a UK holding company backing operating
+        businesses across healthcare (Zanith CHC, CareBreak), logistics, software
+        (CNote Solutions), NGO &amp; FCDO partnerships, and printing. Registered in England &amp; Wales,
+        company number 09115910. Registered office: 103 Stone Drive, Shifnal, Shropshire, TF11 9LX,
+        United Kingdom. Enquiries: <a href="mailto:hello@NitamurAdCaelum.co.uk" style="color:#A9CDB6;">hello@NitamurAdCaelum.co.uk</a>,
+        +44 7864 125677.
+      </p>
+    </div>
+  </noscript>
+
+  <script src="assets/js/site.data.js"></script>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>
